@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ifood/screens/login_screen.dart';
+import 'package:ifood/auth/login_or_register.dart';
 import 'package:ifood/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -20,9 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'iFood',
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(
-        onPressed: () {},
-      ),
+      home: const LoginOrRegister(),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
