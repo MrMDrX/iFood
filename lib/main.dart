@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'iFood',
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
+      home: LoginScreen(
+        onPressed: () {},
+      ),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
