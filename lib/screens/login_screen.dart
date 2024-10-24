@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ifood/screens/home_screen.dart';
 import 'package:ifood/widgets/app_button.dart';
 import 'package:ifood/widgets/app_textfield.dart';
 
@@ -15,6 +16,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
+
+  void login() {
+    // TODO: implement login
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: passwordController,
               obscureText: true),
           const SizedBox(height: 24),
-          AppButton(text: "Sign In", onTap: () {}),
+          AppButton(text: "Sign In", onTap: login),
           const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
