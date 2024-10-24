@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ifood/screens/about_screen.dart';
+import 'package:ifood/screens/settings_screen.dart';
 import 'package:ifood/widgets/drawer_tile.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -32,7 +34,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Placeholder(),
+                  builder: (context) => const SettingsScreen(),
                 ),
               );
             },
@@ -45,7 +47,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Placeholder(),
+                  builder: (context) => const AboutScreen(),
                 ),
               );
             },
