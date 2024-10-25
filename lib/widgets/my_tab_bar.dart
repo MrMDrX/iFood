@@ -18,6 +18,10 @@ class MyTabBar extends StatelessWidget {
     return TabBar(
       controller: tabController,
       tabs: _buildCategoryTabs(),
+      indicatorWeight: 4,
+      indicatorColor: Theme.of(context).colorScheme.inversePrimary,
+      unselectedLabelColor: Theme.of(context).colorScheme.primary,
+      labelColor: Theme.of(context).colorScheme.inversePrimary,
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ifood/models/food_model.dart';
 import 'package:ifood/models/restaurant_model.dart';
+import 'package:ifood/screens/food_screen.dart';
 import 'package:ifood/widgets/drawer.dart';
 import 'package:ifood/widgets/food_tile.dart';
 import 'package:ifood/widgets/my_description_box.dart';
@@ -48,7 +49,16 @@ class _HomeScreenState extends State<HomeScreen>
             final Food food = categoryMenu[index];
             return FoodTile(
               food: food,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FoodScreen(
+                      food: food,
+                    ),
+                  ),
+                );
+              },
             );
           });
     }).toList();
