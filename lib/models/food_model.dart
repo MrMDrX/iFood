@@ -2,7 +2,7 @@ class Food {
   final String name;
   final String description;
   final String image;
-  final String price;
+  final double price;
   final FoodCategory category;
   final List<Addoon> addons;
 
