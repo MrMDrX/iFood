@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ifood/models/food_model.dart';
+import 'package:ifood/models/restaurant_model.dart';
 import 'package:ifood/widgets/app_button.dart';
+import 'package:provider/provider.dart';
 
 class FoodScreen extends StatefulWidget {
   final Food food;
-  final Map<Addoon, bool> selectedAddons = {};
+  final Map<Addon, bool> selectedAddons = {};
+
   FoodScreen({super.key, required this.food}) {
-    for (var addon in food.addons) {
+    for (Addon addon in food.addons) {
       selectedAddons[addon] = false;
     }
   }
@@ -16,6 +19,17 @@ class FoodScreen extends StatefulWidget {
 }
 
 class _FoodScreenState extends State<FoodScreen> {
+  void addToCart(Food food, Map<Addon, bool> selectedAddons) {
+    Navigator.pop(context);
+    List<Addon> currentSelectedAddons = [];
+    for (Addon addon in widget.food.addons) {
+      if (widget.selectedAddons[addon] == true) {
+        currentSelectedAddons.add(addon);
+      }
+    }
+    context.read<Restaurant>().addToCart(food, currentSelectedAddons);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,7 +117,9 @@ class _FoodScreenState extends State<FoodScreen> {
                   const SizedBox(height: 16),
                   AppButton(
                     text: 'Add to cart',
-                    onTap: () {},
+                    onTap: () {
+                      addToCart(widget.food, widget.selectedAddons);
+                    },
                   ),
                   const SizedBox(height: 24),
                 ],

@@ -4,9 +4,9 @@ class Food {
   final String image;
   final double price;
   final FoodCategory category;
-  final List<Addoon> addons;
+  List<Addon> addons;
 
-  const Food({
+  Food({
     required this.category,
     required this.addons,
     required this.name,
@@ -24,9 +24,18 @@ enum FoodCategory {
   drinks,
 }
 
-class Addoon {
+class Addon {
   final String name;
   final double price;
 
-  Addoon({required this.name, required this.price});
+  Addon({required this.name, required this.price});
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is Addon && name == other.name && price == other.price;
+  }
+
+  @override
+  int get hashCode => name.hashCode ^ price.hashCode;
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ifood/screens/cart_screen.dart';
 
 class MySliverAppBar extends StatelessWidget {
   final Widget child;
@@ -18,7 +19,14 @@ class MySliverAppBar extends StatelessWidget {
       floating: false,
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CartScreen(),
+              ),
+            );
+          },
           icon: const Icon(Icons.shopping_cart_rounded),
         ),
       ],

@@ -1,4 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:ifood/models/cart_item.dart';
 import 'package:ifood/models/food_model.dart';
 
 class Restaurant extends ChangeNotifier {
@@ -12,9 +14,9 @@ class Restaurant extends ChangeNotifier {
       price: 9.99,
       category: FoodCategory.burgers,
       addons: [
-        Addoon(name: "Extra Pineapple", price: 1.49),
-        Addoon(name: "Teriyaki Sauce", price: 0.99),
-        Addoon(name: "Bacon", price: 1.99),
+        Addon(name: "Extra Pineapple", price: 1.49),
+        Addon(name: "Teriyaki Sauce", price: 0.99),
+        Addon(name: "Bacon", price: 1.99),
       ],
     ),
     Food(
@@ -25,9 +27,9 @@ class Restaurant extends ChangeNotifier {
       price: 10.99,
       category: FoodCategory.burgers,
       addons: [
-        Addoon(name: "Grilled Onions", price: 0.99),
-        Addoon(name: "Jalapenos", price: 1.49),
-        Addoon(name: "Extra BBQ Sauce", price: 1.99),
+        Addon(name: "Grilled Onions", price: 0.99),
+        Addon(name: "Jalapenos", price: 1.49),
+        Addon(name: "Extra BBQ Sauce", price: 1.99),
       ],
     ),
     Food(
@@ -38,9 +40,9 @@ class Restaurant extends ChangeNotifier {
       price: 8.99,
       category: FoodCategory.burgers,
       addons: [
-        Addoon(name: "Cheese", price: 0.99),
-        Addoon(name: "Lettuce", price: 1.49),
-        Addoon(name: "Avocado", price: 2.99),
+        Addon(name: "Cheese", price: 0.99),
+        Addon(name: "Lettuce", price: 1.49),
+        Addon(name: "Avocado", price: 2.99),
       ],
     ),
     Food(
@@ -51,8 +53,8 @@ class Restaurant extends ChangeNotifier {
       price: 9.49,
       category: FoodCategory.burgers,
       addons: [
-        Addoon(name: "Spicy Sauce", price: 1.49),
-        Addoon(name: "Coleslaw", price: 1.99),
+        Addon(name: "Spicy Sauce", price: 1.49),
+        Addon(name: "Coleslaw", price: 1.99),
       ],
     ),
     Food(
@@ -63,8 +65,8 @@ class Restaurant extends ChangeNotifier {
       price: 7.99,
       category: FoodCategory.burgers,
       addons: [
-        Addoon(name: "Avocado", price: 2.99),
-        Addoon(name: "Sautéed Mushrooms", price: 1.49),
+        Addon(name: "Avocado", price: 2.99),
+        Addon(name: "Sautéed Mushrooms", price: 1.49),
       ],
     ),
 
@@ -77,8 +79,8 @@ class Restaurant extends ChangeNotifier {
       price: 6.99,
       category: FoodCategory.salads,
       addons: [
-        Addoon(name: "Grilled Chicken", price: 3.49),
-        Addoon(name: "Bacon Bits", price: 1.49),
+        Addon(name: "Grilled Chicken", price: 3.49),
+        Addon(name: "Bacon Bits", price: 1.49),
       ],
     ),
     Food(
@@ -89,8 +91,8 @@ class Restaurant extends ChangeNotifier {
       price: 5.99,
       category: FoodCategory.salads,
       addons: [
-        Addoon(name: "Feta Cheese", price: 1.99),
-        Addoon(name: "Olives", price: 0.99),
+        Addon(name: "Feta Cheese", price: 1.99),
+        Addon(name: "Olives", price: 0.99),
       ],
     ),
     Food(
@@ -100,8 +102,8 @@ class Restaurant extends ChangeNotifier {
       price: 7.49,
       category: FoodCategory.salads,
       addons: [
-        Addoon(name: "Grilled Shrimp", price: 4.49),
-        Addoon(name: "Avocado", price: 2.99),
+        Addon(name: "Grilled Shrimp", price: 4.49),
+        Addon(name: "Avocado", price: 2.99),
       ],
     ),
     Food(
@@ -112,13 +114,13 @@ class Restaurant extends ChangeNotifier {
       price: 6.49,
       category: FoodCategory.salads,
       addons: [
-        Addoon(name: "Salami", price: 1.99),
-        Addoon(name: "Pepperoncini", price: 0.99),
+        Addon(name: "Salami", price: 1.99),
+        Addon(name: "Pepperoncini", price: 0.99),
       ],
     ),
 
     // Sides
-    const Food(
+    Food(
       name: "Fries",
       description: "Crispy golden fries, perfect as a side dish.",
       image: "assets/images/sides/fries.jpg",
@@ -133,10 +135,10 @@ class Restaurant extends ChangeNotifier {
       price: 8.99,
       category: FoodCategory.sides,
       addons: [
-        Addoon(name: "Extra Sauce", price: 1.49),
+        Addon(name: "Extra Sauce", price: 1.49),
       ],
     ),
-    const Food(
+    Food(
       name: "Chips",
       description: "Crunchy tortilla chips served with salsa.",
       image: "assets/images/sides/chips.jpg",
@@ -153,7 +155,7 @@ class Restaurant extends ChangeNotifier {
       price: 4.99,
       category: FoodCategory.desserts,
       addons: [
-        Addoon(name: "Vanilla Ice Cream", price: 1.99),
+        Addon(name: "Vanilla Ice Cream", price: 1.99),
       ],
     ),
     Food(
@@ -163,7 +165,7 @@ class Restaurant extends ChangeNotifier {
       price: 5.49,
       category: FoodCategory.desserts,
       addons: [
-        Addoon(name: "Strawberry Sauce", price: 1.49),
+        Addon(name: "Strawberry Sauce", price: 1.49),
       ],
     ),
     Food(
@@ -174,12 +176,12 @@ class Restaurant extends ChangeNotifier {
       price: 4.49,
       category: FoodCategory.desserts,
       addons: [
-        Addoon(name: "Whipped Cream", price: 0.99),
+        Addon(name: "Whipped Cream", price: 0.99),
       ],
     ),
 
     // Drinks
-    const Food(
+    Food(
       name: "Coke",
       description: "Classic carbonated soft drink.",
       image: "assets/images/drinks/coke.jpg",
@@ -187,7 +189,7 @@ class Restaurant extends ChangeNotifier {
       category: FoodCategory.drinks,
       addons: [],
     ),
-    const Food(
+    Food(
       name: "Soda",
       description: "Refreshing soda in various flavors.",
       image: "assets/images/drinks/soda.jpg",
@@ -202,10 +204,10 @@ class Restaurant extends ChangeNotifier {
       price: 2.49,
       category: FoodCategory.drinks,
       addons: [
-        Addoon(name: "Mint", price: 0.99),
+        Addon(name: "Mint", price: 0.99),
       ],
     ),
-    const Food(
+    Food(
       name: "Orange Juice",
       description: "Freshly squeezed orange juice, served chilled.",
       image: "assets/images/drinks/orange_juice.jpg",
@@ -216,4 +218,60 @@ class Restaurant extends ChangeNotifier {
   ];
 
   List<Food> get menu => _menu;
+
+  final List<CartItem> _cart = [];
+
+  List<CartItem> get cart => _cart;
+
+  void addToCart(Food food, List<Addon> addOns) {
+    CartItem? cartItem = _cart.firstWhereOrNull((item) {
+      bool isSameFood = item.food == food;
+      bool isSameAddons = const ListEquality().equals(item.addOns, addOns);
+      return isSameFood && isSameAddons;
+    });
+
+    if (cartItem != null) {
+      cartItem.quantity++;
+    } else {
+      _cart.add(CartItem(food: food, addOns: addOns));
+    }
+    notifyListeners();
+  }
+
+  void removeFromCart(CartItem cartItem) {
+    int cartIndex = _cart.indexOf(cartItem);
+    if (cartIndex != -1) {
+      if (_cart[cartIndex].quantity > 1) {
+        _cart[cartIndex].quantity--;
+      } else {
+        _cart.removeAt(cartIndex);
+      }
+    }
+    notifyListeners();
+  }
+
+  double getTotalPrice() {
+    double totalPrice = 0.0;
+    for (CartItem cartItem in _cart) {
+      double itemPrice = cartItem.food.price;
+      for (Addon addon in cartItem.addOns) {
+        itemPrice += addon.price;
+      }
+      totalPrice += itemPrice * cartItem.quantity;
+    }
+    return totalPrice;
+  }
+
+  int getTotalQuantity() {
+    int totalQuantity = 0;
+    for (CartItem cartItem in _cart) {
+      totalQuantity += cartItem.quantity;
+    }
+    return totalQuantity;
+  }
+
+  void clearCart() {
+    _cart.clear();
+    notifyListeners();
+  }
 }
