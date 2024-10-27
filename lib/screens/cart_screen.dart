@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ifood/models/restaurant_model.dart';
+import 'package:ifood/screens/payment_screen.dart';
 import 'package:ifood/widgets/app_button.dart';
 import 'package:ifood/widgets/cart_tile.dart';
 import 'package:provider/provider.dart';
@@ -76,7 +77,15 @@ class CartScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: AppButton(text: "Checkout", onTap: () {}),
+                    child: AppButton(
+                      text: "Checkout",
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PaymentScreen(),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
