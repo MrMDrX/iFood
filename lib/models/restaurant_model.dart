@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:ifood/models/cart_item.dart';
 import 'package:ifood/models/food_model.dart';
+import 'package:intl/intl.dart';
 
 class Restaurant extends ChangeNotifier {
   final List<Food> _menu = [
@@ -273,5 +274,55 @@ class Restaurant extends ChangeNotifier {
   void clearCart() {
     _cart.clear();
     notifyListeners();
+  }
+
+  String displayCartReceipt() {
+    final receipt = StringBuffer();
+
+    // Header
+    receipt.writeln("---------------------------------------------------");
+    receipt.writeln("                                      RECEIPT");
+    receipt.writeln("---------------------------------------------------");
+
+    // Date
+    String formattedDate =
+        DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+    receipt.writeln("Date:                $formattedDate");
+    receipt.writeln();
+
+    // Menu Header
+    receipt.writeln("---------------------------------------------------");
+    receipt.writeln("                                      MENU");
+    receipt.writeln("---------------------------------------------------");
+
+    // Menu Items
+    for (final cartItem in _cart) {
+      receipt.writeln(
+          "${cartItem.quantity} x ${cartItem.food.name.padRight(30)}${_formatPrice(cartItem.food.price)}");
+      if (cartItem.addOns.isNotEmpty) {
+        receipt.writeln("  Add-ons: ${_formatAddOns(cartItem.addOns)}");
+      }
+    }
+
+    // Summary
+    receipt.writeln("---------------------------------------------------");
+    receipt.writeln("Total Items:                  ${getTotalQuantity()}");
+    receipt.writeln(
+        "Total Price:                ${_formatPrice(getTotalPrice())}");
+    receipt.writeln("---------------------------------------------------");
+    receipt.writeln();
+    receipt.writeln("Thank you for your purchase!");
+
+    return receipt.toString();
+  }
+
+  String _formatPrice(double price) {
+    return "\$${price.toStringAsFixed(2)}";
+  }
+
+  String _formatAddOns(List<Addon> addOns) {
+    return addOns
+        .map((addon) => "${addon.name} (${_formatPrice(addon.price)})")
+        .join(", ");
   }
 }
