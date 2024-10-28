@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ifood/service/auth/auth_service.dart';
-import 'package:ifood/screens/home_screen.dart';
 import 'package:ifood/widgets/app_button.dart';
 import 'package:ifood/widgets/app_textfield.dart';
 
@@ -33,9 +32,6 @@ class _LoginScreenState extends State<LoginScreen> {
             );
           });
     }
-
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const HomeScreen()));
   }
 
   @override

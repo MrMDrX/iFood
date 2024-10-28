@@ -49,18 +49,19 @@ class CartTile extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Text("\$${cartItem.food.price}"),
+                        const SizedBox(height: 8),
+                        QuantitySelector(
+                          quantity: cartItem.quantity,
+                          food: cartItem.food,
+                          onIncrement: () {
+                            restaurant.addToCart(
+                                cartItem.food, cartItem.addOns);
+                          },
+                          onDecrement: () {
+                            restaurant.removeFromCart(cartItem);
+                          },
+                        ),
                       ],
-                    ),
-                    const Spacer(),
-                    QuantitySelector(
-                      quantity: cartItem.quantity,
-                      food: cartItem.food,
-                      onIncrement: () {
-                        restaurant.addToCart(cartItem.food, cartItem.addOns);
-                      },
-                      onDecrement: () {
-                        restaurant.removeFromCart(cartItem);
-                      },
                     ),
                   ],
                 ),

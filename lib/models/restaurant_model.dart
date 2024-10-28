@@ -218,11 +218,15 @@ class Restaurant extends ChangeNotifier {
     ),
   ];
 
-  List<Food> get menu => _menu;
-
   final List<CartItem> _cart = [];
 
+  String _deliveryAddress = "Enter delivery address";
+
+  List<Food> get menu => _menu;
+
   List<CartItem> get cart => _cart;
+
+  String get deliveryAddress => _deliveryAddress;
 
   void addToCart(Food food, List<Addon> addOns) {
     CartItem? cartItem = _cart.firstWhereOrNull((item) {
@@ -276,6 +280,11 @@ class Restaurant extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateDeliveryAddress(String address) {
+    _deliveryAddress = address;
+    notifyListeners();
+  }
+
   String displayCartReceipt() {
     final receipt = StringBuffer();
 
@@ -287,7 +296,7 @@ class Restaurant extends ChangeNotifier {
     // Date
     String formattedDate =
         DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
-    receipt.writeln("Date:                $formattedDate");
+    receipt.writeln("Date :                $formattedDate");
     receipt.writeln();
 
     // Menu Header
@@ -300,15 +309,17 @@ class Restaurant extends ChangeNotifier {
       receipt.writeln(
           "${cartItem.quantity} x ${cartItem.food.name.padRight(30)}${_formatPrice(cartItem.food.price)}");
       if (cartItem.addOns.isNotEmpty) {
-        receipt.writeln("  Add-ons: ${_formatAddOns(cartItem.addOns)}");
+        receipt.writeln("  Add-ons : ${_formatAddOns(cartItem.addOns)}");
       }
     }
 
     // Summary
     receipt.writeln("---------------------------------------------------");
-    receipt.writeln("Total Items:                  ${getTotalQuantity()}");
+    receipt.writeln("Total Items :                  ${getTotalQuantity()}");
     receipt.writeln(
         "Total Price:                ${_formatPrice(getTotalPrice())}");
+    receipt.writeln("---------------------------------------------------");
+    receipt.writeln("Delivery Address :                  $_deliveryAddress");
     receipt.writeln("---------------------------------------------------");
     receipt.writeln();
     receipt.writeln("Thank you for your purchase!");

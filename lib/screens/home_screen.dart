@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen>
                     endIndent: 24,
                     color: Theme.of(context).colorScheme.secondary,
                   ),
-                  const MyLocation(),
+                  MyLocation(),
                   const MyDescriptionBox(),
                 ],
               )),

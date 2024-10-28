@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:ifood/screens/delivery_progress_screen.dart';
+import 'package:ifood/screens/delivery_screen.dart';
 import 'package:ifood/widgets/app_button.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -49,7 +49,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const DeliveryProgressScreen(),
+                          builder: (context) => const DeliveryScreen(),
                         ),
                       );
                     },

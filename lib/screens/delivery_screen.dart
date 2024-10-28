@@ -1,19 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:ifood/models/restaurant_model.dart';
+import 'package:ifood/service/database/firestore.dart';
 import 'package:ifood/widgets/my_receipt.dart';
+import 'package:provider/provider.dart';
 
-class DeliveryProgressScreen extends StatelessWidget {
-  const DeliveryProgressScreen({super.key});
+class DeliveryScreen extends StatefulWidget {
+  const DeliveryScreen({super.key});
+
+  @override
+  State<DeliveryScreen> createState() => _DeliveryScreenState();
+}
+
+class _DeliveryScreenState extends State<DeliveryScreen> {
+  FirestoreService db = FirestoreService();
+
+  @override
+  void initState() {
+    super.initState();
+    String receipt = context.read<Restaurant>().displayCartReceipt();
+    db.saveOrderToDb(receipt);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Delivery Progress"),
+        title: const Text("Successful Order"),
         centerTitle: true,
       ),
       bottomNavigationBar: _buildBottomAppBar(context),
       body: const SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             MyReceipt(),
           ],

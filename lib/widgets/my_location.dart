@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ifood/models/restaurant_model.dart';
+import 'package:provider/provider.dart';
 
 class MyLocation extends StatelessWidget {
-  const MyLocation({super.key});
+  MyLocation({super.key});
+
+  final textController = TextEditingController();
 
   void openLocationSearch(BuildContext context) {
     showDialog(
@@ -10,8 +14,9 @@ class MyLocation extends StatelessWidget {
           return AlertDialog(
             title: const Text("Your location"),
             content: TextField(
+              controller: textController,
               decoration: InputDecoration(
-                hintText: "Enter a location",
+                hintText: "Enter address",
                 hintStyle: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
                 ),
@@ -29,6 +34,9 @@ class MyLocation extends StatelessWidget {
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
+                  Provider.of<Restaurant>(context, listen: false)
+                      .updateDeliveryAddress(textController.text);
+                  textController.clear();
                 },
                 child: const Text("Save"),
               ),
@@ -52,12 +60,14 @@ class MyLocation extends StatelessWidget {
             onTap: () => openLocationSearch(context),
             child: Row(
               children: [
-                Text(
-                  "Current location",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                      fontWeight: FontWeight.bold),
-                ),
+                Consumer<Restaurant>(builder: (context, restaurant, child) {
+                  return Text(
+                    restaurant.deliveryAddress,
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                        fontWeight: FontWeight.bold),
+                  );
+                }),
                 const Icon(Icons.keyboard_arrow_down_rounded),
               ],
             ),
