@@ -19,6 +19,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
     super.initState();
     String receipt = context.read<Restaurant>().displayCartReceipt();
     db.saveOrderToDb(receipt);
+    context.read<Restaurant>().clearCart();
   }
 
   @override

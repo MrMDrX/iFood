@@ -30,13 +30,11 @@ class CartTile extends StatelessWidget {
                       borderRadius: const BorderRadius.all(Radius.circular(8)),
                       child: Image.asset(
                         cartItem.food.image,
-                        height: 100,
-                        width: 100,
+                        height: 128,
+                        width: 128,
                       ),
                     ),
-                    const SizedBox(
-                      width: 16,
-                    ),
+                    const SizedBox(width: 16),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

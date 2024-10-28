@@ -10,6 +10,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double totalPrice = Provider.of<Restaurant>(context).getTotalPrice();
     return Consumer<Restaurant>(builder: (context, restaurant, child) {
       final cart = restaurant.cart;
       final isCartEmpty = cart.isEmpty;
@@ -78,7 +79,7 @@ class CartScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: AppButton(
-                      text: "Checkout",
+                      text: "Checkout ( \$$totalPrice )",
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(

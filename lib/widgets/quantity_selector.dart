@@ -35,7 +35,7 @@ class QuantitySelector extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: SizedBox(
-              width: 16,
+              width: 20,
               child: Center(child: Text("$quantity")),
             ),
           ),
