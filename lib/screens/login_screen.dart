@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ifood/service/auth/auth_service.dart';
 import 'package:ifood/screens/home_screen.dart';
 import 'package:ifood/widgets/app_button.dart';
 import 'package:ifood/widgets/app_textfield.dart';
@@ -17,8 +18,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController passwordController = TextEditingController();
 
-  void login() {
-    // TODO: implement login
+  void login() async {
+    final authService = AuthService();
+    try {
+      await authService.signInWithEmailAndPassword(
+          emailController.text, passwordController.text);
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text("Error"),
+              content: Text(e.toString()),
+            );
+          });
+    }
 
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const HomeScreen()));

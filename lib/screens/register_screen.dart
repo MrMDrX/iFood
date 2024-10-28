@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ifood/service/auth/auth_service.dart';
 import 'package:ifood/widgets/app_button.dart';
 import 'package:ifood/widgets/app_textfield.dart';
 
@@ -18,6 +19,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   final TextEditingController confirmPasswordController =
       TextEditingController();
+
+  void register() async {
+    final authService = AuthService();
+    if (passwordController.text == confirmPasswordController.text) {
+      try {
+        await authService.signUpWithEmailAndPassword(
+            emailController.text, passwordController.text);
+      } catch (e) {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text("Error"),
+                content: Text(e.toString()),
+              );
+            });
+      }
+    } else {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              title: Text("Error"),
+              content: Text("Passwords do not match"),
+            );
+          });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               controller: confirmPasswordController,
               obscureText: true),
           const SizedBox(height: 24),
-          AppButton(text: "Sign Up", onTap: () {}),
+          AppButton(text: "Sign Up", onTap: register),
           const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

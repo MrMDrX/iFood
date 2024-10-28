@@ -1,10 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:ifood/auth/login_or_register.dart';
+import 'package:ifood/service/auth/auth_gate.dart';
+import 'package:ifood/firebase_options.dart';
 import 'package:ifood/models/restaurant_model.dart';
 import 'package:ifood/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => ThemeProvider()),
@@ -22,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'iFood',
       debugShowCheckedModeBanner: false,
-      home: const LoginOrRegister(),
+      home: const AuthGate(),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
