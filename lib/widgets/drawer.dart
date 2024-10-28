@@ -58,14 +58,16 @@ class AppDrawer extends StatelessWidget {
               );
             },
           ),
+          const Spacer(),
           DrawerTile(
             title: 'LOGOUT',
             leading: Icons.logout_rounded,
             onTap: () {
-              logout();
               Navigator.pop(context);
+              logout();
             },
           ),
+          const SizedBox(height: 24),
         ],
       ),
     );

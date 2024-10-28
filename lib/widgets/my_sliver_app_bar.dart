@@ -16,8 +16,8 @@ class MySliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     int itemCount = Provider.of<Restaurant>(context).getTotalQuantity();
     return SliverAppBar(
-      expandedHeight: 340,
-      collapsedHeight: 120,
+      expandedHeight: 332,
+      collapsedHeight: 100,
       pinned: true,
       floating: false,
       actions: [
@@ -60,7 +60,13 @@ class MySliverAppBar extends StatelessWidget {
       ],
       backgroundColor: Theme.of(context).colorScheme.surface,
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,
-      title: const Text("iFood"),
+      title: Text(
+        "iFood",
+        style: TextStyle(
+            color: Theme.of(context).colorScheme.inversePrimary,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 4),
+      ),
       centerTitle: true,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(

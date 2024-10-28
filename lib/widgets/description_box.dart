@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyDescriptionBox extends StatelessWidget {
-  const MyDescriptionBox({super.key});
+class DescriptionBox extends StatelessWidget {
+  const DescriptionBox({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -54,9 +54,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Icon(
-            Icons.lock_open_rounded,
+            Icons.fastfood_rounded,
             size: 96,
             color: Theme.of(context).colorScheme.inversePrimary,
           ),

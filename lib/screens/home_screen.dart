@@ -4,7 +4,7 @@ import 'package:ifood/models/restaurant_model.dart';
 import 'package:ifood/screens/food_screen.dart';
 import 'package:ifood/widgets/drawer.dart';
 import 'package:ifood/widgets/food_tile.dart';
-import 'package:ifood/widgets/my_description_box.dart';
+import 'package:ifood/widgets/description_box.dart';
 import 'package:ifood/widgets/my_location.dart';
 import 'package:ifood/widgets/my_sliver_app_bar.dart';
 import 'package:ifood/widgets/my_tab_bar.dart';
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen>
                     color: Theme.of(context).colorScheme.secondary,
                   ),
                   MyLocation(),
-                  const MyDescriptionBox(),
+                  const DescriptionBox(),
                 ],
               )),
         ],

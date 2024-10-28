@@ -26,8 +26,10 @@ class QuantitySelector extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: const Icon(
-              Icons.remove_circle_outline,
+            icon: Icon(
+              quantity == 1
+                  ? Icons.delete_rounded
+                  : Icons.remove_circle_outline,
               size: 24,
             ),
             onPressed: onDecrement,

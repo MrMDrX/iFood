@@ -10,13 +10,17 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double totalPrice = Provider.of<Restaurant>(context).getTotalPrice();
+    String totalPrice = Provider.of<Restaurant>(context)
+        .getTotalPrice()
+        .round()
+        .toStringAsFixed(2);
     return Consumer<Restaurant>(builder: (context, restaurant, child) {
       final cart = restaurant.cart;
       final isCartEmpty = cart.isEmpty;
       return Scaffold(
         appBar: AppBar(
           title: const Text("Cart"),
+          centerTitle: true,
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
